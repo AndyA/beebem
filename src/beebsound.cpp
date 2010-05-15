@@ -651,7 +651,10 @@ void LoadRelaySounds(void) {
 
 	RelayFile=fopen(PRFN,"rb");
 	if (RelayFile!=NULL) {
-		fatal_fread(RelayOnBuf,1,2048,RelayFile);
+                size_t got;
+                memset(RelayOnBuf, 0, sizeof(RelayOnBuf));
+                // Ignore read length
+		got = fread(RelayOnBuf,1,sizeof(RelayOnBuf),RelayFile);
 		fclose(RelayFile);
 	}
 	else {
@@ -667,7 +670,10 @@ void LoadRelaySounds(void) {
 
 	RelayFile=fopen(PRFN,"rb");
 	if (RelayFile!=NULL) {
-		fatal_fread(RelayOffBuf,1,2048,RelayFile);
+                size_t got;
+                memset(RelayOffBuf, 0, sizeof(RelayOffBuf));
+                // Ignore read length
+		got = fread(RelayOffBuf,1,sizeof(RelayOffBuf),RelayFile);
 		fclose(RelayFile);
 	}
 	else {
