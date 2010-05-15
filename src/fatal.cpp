@@ -6,7 +6,11 @@
 #include <stdlib.h>
 #define __STDC_FORMAT_MACROS
 #include <inttypes.h>
-    void
+
+#define _LOCF " at %s, line %d"
+#define _LOCV file, line
+
+void
 fatal( const char *msg, ... ) {
   va_list ap;
   va_start( ap, msg );
@@ -18,17 +22,17 @@ fatal( const char *msg, ... ) {
 }
 
 void
-fatal_fread( void *ptr, size_t size, size_t nmemb, FILE * stream ) {
+fatal__fread( _LOC, void *ptr, size_t size, size_t nmemb, FILE * stream ) {
   size_t got = fread( ptr, size, nmemb, stream );
   if ( got != nmemb ) {
-    fatal( "Short read (expected %" PRIuPTR ", got %" PRIuPTR ")", nmemb,
-           got );
+    fatal( "Short read (expected %" PRIuPTR ", got %" PRIuPTR ")" _LOCF,
+           nmemb, got, _LOCV );
   }
 }
 
 void
-fatal_fgets( char *s, int size, FILE * stream ) {
+fatal__fgets( _LOC, char *s, int size, FILE * stream ) {
   if ( NULL == fgets( s, size, stream ) ) {
-    fatal( "Read failed" );
+    fatal( "Read failed" _LOCF, _LOCV );
   }
 }
