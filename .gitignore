@@ -2,3 +2,12 @@ Session.vim
 autom4te.cache
 *~
 .*.swp
+Makefile
+config.h
+config.log
+config.status
+.deps
+stamp-h1
+*.o
+*.a
+src/beebem
