@@ -49,8 +49,6 @@ bool mBreakOutWindow = false;
 int	BitKey;			// Used to store the bit key pressed while we wait 
 int BitKeys[8] = {48, 49, 50, 51, 52, 53, 54, 55};
 int LastBitButton = 0;
-static HWND hwndBreakOut;
-static HWND hwndGetBitKey;
 extern HWND hCurrentDialog;
 
 /* AMX mouse (see uservia.h) */
@@ -866,12 +864,14 @@ char *BitKeyName( int Key )
 //--		return Character;
 //--	}
 //--
+  return NULL;
 }
 
 int GetValue(int ctrlID)
 
 {
 //--	return (SendDlgItemMessage(hwndBreakOut, ctrlID, BM_GETCHECK, 0, 0) == BST_CHECKED);
+  return 0;
 }
 
 void SetValue(int ctrlID, int State)

@@ -59,7 +59,7 @@ void PGetBoardProperties(struct DriveControlBlock *FDBoard)
 // (C) September 2001 - Richard Gellman
 //-----------------------------------------------------------------------
 
-char *AcornName="Acorn 1770 DFS Extension board for BBC Model B";
+const char *AcornName="Acorn 1770 DFS Extension board for BBC Model B";
 
 // The dll must assume the 1770 system accepts a Master 128 type control 
 // reg thus:
@@ -108,7 +108,7 @@ void SetAs_AcornFDC(void)
 // (C) September 2001 - Richard Gellman
 //-----------------------------------------------------------------------
 
-char *WatfordName="Watford DDFS Extension board for BBC Model B";
+const char *WatfordName="Watford DDFS Extension board for BBC Model B";
 
 // The dll must assume the 1770 system accepts a Master 128 type control reg thus:
 // Bit 0 Drive Select 0
@@ -158,7 +158,7 @@ void SetAs_WatfordFDC(void)
 // (C) September 2001 - Richard Gellman
 //-----------------------------------------------------------------------
 
-char *OpusName="Opus DDOS Extension board for BBC Model B";
+const char *OpusName="Opus DDOS Extension board for BBC Model B";
 
 // The dll must assume the 1770 system accepts a Master 128 type control reg thus:
 // Bit 0 Drive Select 0

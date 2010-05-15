@@ -135,52 +135,48 @@ static const char *CFG_FILE_NAME = "BeebEm.ini";
 //->static char *CFG_REG_KEY = "Software\\BeebEm";
 //++
 	//## Needed by GUI.
-char *CFG_REG_KEY = "Software\\BeebEm";
+const char *CFG_REG_KEY = "Software\\BeebEm";
 //<-
 
-static char *CFG_VIEW_SECTION = "View";
-static char *CFG_VIEW_WIN_SIZE = "WinSize";
-static char *CFG_VIEW_SHOW_FPS = "ShowFSP";
-static char *CFG_VIEW_DIRECT_ENABLED = "DirectDrawEnabled";
-static char *CFG_VIEW_BUFFER_IN_VIDEO = "BufferInVideoRAM";
-static char *CFG_VIEW_MONITOR = "Monitor";
+static const char *CFG_VIEW_SECTION = "View";
+static const char *CFG_VIEW_WIN_SIZE = "WinSize";
+static const char *CFG_VIEW_SHOW_FPS = "ShowFSP";
+static const char *CFG_VIEW_DIRECT_ENABLED = "DirectDrawEnabled";
+static const char *CFG_VIEW_BUFFER_IN_VIDEO = "BufferInVideoRAM";
+static const char *CFG_VIEW_MONITOR = "Monitor";
 
-static char *CFG_SOUND_SECTION = "Sound";
-static char *CFG_SOUND_SAMPLE_RATE = "SampleRate";
-static char *CFG_SOUND_VOLUME = "Volume";
-static char *CFG_SOUND_ENABLED = "SoundEnabled";
-static char *CFG_SOUND_DIRECT_ENABLED = "DirectSoundEnabled";
+static const char *CFG_SOUND_SECTION = "Sound";
+static const char *CFG_SOUND_SAMPLE_RATE = "SampleRate";
+static const char *CFG_SOUND_VOLUME = "Volume";
+static const char *CFG_SOUND_ENABLED = "SoundEnabled";
+static const char *CFG_SOUND_DIRECT_ENABLED = "DirectSoundEnabled";
 
-static char *CFG_OPTIONS_SECTION = "Options";
-static char *CFG_OPTIONS_STICKS = "Sticks";
-static char *CFG_OPTIONS_KEY_MAPPING = "KeyMapping";
+static const char *CFG_OPTIONS_SECTION = "Options";
+static const char *CFG_OPTIONS_STICKS = "Sticks";
+static const char *CFG_OPTIONS_KEY_MAPPING = "KeyMapping";
 //--static char *CFG_OPTIONS_USER_KEY_MAP = "UserKeyMap";
-static char *CFG_OPTIONS_FREEZEINACTIVE = "FreezeWhenInactive";
-static char *CFG_OPTIONS_HIDE_CURSOR = "HideCursor";
+static const char *CFG_OPTIONS_FREEZEINACTIVE = "FreezeWhenInactive";
+static const char *CFG_OPTIONS_HIDE_CURSOR = "HideCursor";
 
-static char *CFG_SPEED_SECTION = "Speed";
-static char *CFG_SPEED_TIMING = "Timing";
+static const char *CFG_SPEED_SECTION = "Speed";
+static const char *CFG_SPEED_TIMING = "Timing";
 
-static char *CFG_AMX_SECTION = "AMX";
-static char *CFG_AMX_ENABLED = "AMXMouseEnabled";
-static char *CFG_AMX_LRFORMIDDLE = "AMXMouseLRForMiddle";
-static char *CFG_AMX_SIZE = "AMXMouseSize";
-static char *CFG_AMX_ADJUST = "AMXMouseAdjust";
+static const char *CFG_AMX_SECTION = "AMX";
+static const char *CFG_AMX_ENABLED = "AMXMouseEnabled";
+static const char *CFG_AMX_LRFORMIDDLE = "AMXMouseLRForMiddle";
+static const char *CFG_AMX_SIZE = "AMXMouseSize";
+static const char *CFG_AMX_ADJUST = "AMXMouseAdjust";
 
-static char *CFG_PRINTER_SECTION = "Printer";
-static char *CFG_PRINTER_ENABLED = "PrinterEnabled";
-static char *CFG_PRINTER_PORT = "PrinterPort";
-static char *CFG_PRINTER_FILE = "PrinterFile";
+static const char *CFG_PRINTER_SECTION = "Printer";
+static const char *CFG_PRINTER_ENABLED = "PrinterEnabled";
+static const char *CFG_PRINTER_PORT = "PrinterPort";
+static const char *CFG_PRINTER_FILE = "PrinterFile";
 
 //--static char *CFG_MODEL_SECTION = "Model";
 //--static char *CFG_MACHINE_TYPE = "MachineType";
 
 #define CFG_KEYBOARD_LAYOUT "SYSTEM\\CurrentControlSet\\Control\\Keyboard Layout"
 #define CFG_SCANCODE_MAP "Scancode Map"
-static unsigned char CFG_DISABLE_WINDOWS_KEYS[24] = {
-	00,00,00,00,00,00,00,00,03,00,00,00,00,00,0x5B,0xE0,00,00,0x5C,0xE0,00,00,00,00
-};
-
 
 /* Prototypes */
 //-- LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
@@ -5837,7 +5833,7 @@ void BeebWin::HandleCommandLineFile()
 // if DLLName is NULL then FDC setting is read from the registry
 // else the named DLL is read in
 // if save is true then DLL selection is saved in registry
-void BeebWin::LoadFDC(char *DLLName, bool save) {
+void BeebWin::LoadFDC(const char *DLLName, bool save) {
 
 //->
 //## Just a quick hack for now, will change this once Registry emulated.

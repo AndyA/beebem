@@ -31,7 +31,7 @@
 //<-
 
 // http://msdn.microsoft.com/library/default.asp?url=/library/en-us/sysinfo/base/regcreatekey.asp
-bool cRegistry::CreateKey(HKEY hKeyRoot, LPSTR lpSubKey)
+bool cRegistry::CreateKey(HKEY hKeyRoot, LPCTSTR lpSubKey)
 {
 //+>
 	// We don't need this as our config file will contain only BeebEm
@@ -50,7 +50,7 @@ bool cRegistry::CreateKey(HKEY hKeyRoot, LPSTR lpSubKey)
 //--	return false;
 }
 
-bool cRegistry::DeleteKey(HKEY hKeyRoot, LPSTR lpSubKey)
+bool cRegistry::DeleteKey(HKEY hKeyRoot, LPCTSTR lpSubKey)
 {
 //+>
 	// The Windows version of Beebem does not call this function.
@@ -68,7 +68,7 @@ bool cRegistry::DeleteKey(HKEY hKeyRoot, LPSTR lpSubKey)
 //--	return false;
 }
 
-bool cRegistry::DeleteValue(HKEY hKeyRoot, LPSTR lpSubKey, LPSTR lpValueName)
+bool cRegistry::DeleteValue(HKEY hKeyRoot, LPCTSTR lpSubKey, LPCTSTR lpValueName)
 {
 //+>
 //## The Windows version of Beebem does not call this function.
@@ -81,7 +81,7 @@ bool cRegistry::DeleteValue(HKEY hKeyRoot, LPSTR lpSubKey, LPSTR lpValueName)
 //<+
 }
 
-bool cRegistry::GetBinaryValue(HKEY hKeyRoot, LPSTR lpSubKey, LPSTR lpValue, PVOID pData, int *pnSize)
+bool cRegistry::GetBinaryValue(HKEY hKeyRoot, LPCTSTR lpSubKey, LPCTSTR lpValue, PVOID pData, int *pnSize)
 {
 
 //+>
@@ -131,7 +131,7 @@ bool cRegistry::GetBinaryValue(HKEY hKeyRoot, LPSTR lpSubKey, LPSTR lpValue, PVO
 //--	return false;
 }
 
-bool cRegistry::GetDWORDValue(HKEY hKeyRoot, LPSTR lpSubKey, LPSTR lpValue, DWORD &dwBuffer)
+bool cRegistry::GetDWORDValue(HKEY hKeyRoot, LPCTSTR lpSubKey, LPCTSTR lpValue, DWORD &dwBuffer)
 {
 //+>
 	// hKeyRoot = User
@@ -175,7 +175,7 @@ bool cRegistry::GetDWORDValue(HKEY hKeyRoot, LPSTR lpSubKey, LPSTR lpValue, DWOR
 //--	return false;
 }
 
-bool cRegistry::GetStringValue(HKEY hKeyRoot, LPSTR lpSubKey, LPSTR lpValue, LPSTR lpBuffer)
+bool cRegistry::GetStringValue(HKEY hKeyRoot, LPCTSTR lpSubKey, LPCTSTR lpValue, LPSTR lpBuffer)
 {
 //+>
 	// hKeyRoot = User
@@ -216,7 +216,7 @@ bool cRegistry::GetStringValue(HKEY hKeyRoot, LPSTR lpSubKey, LPSTR lpValue, LPS
 //--	return false;
 }
 
-bool cRegistry::SetBinaryValue(HKEY hKeyRoot, LPSTR lpSubKey, LPSTR lpValue, PVOID pData, int* pnSize)
+bool cRegistry::SetBinaryValue(HKEY hKeyRoot, LPCTSTR lpSubKey, LPCTSTR lpValue, const PVOID pData, int* pnSize)
 {
 //+>
 	// hKeyRoot = User
@@ -261,7 +261,7 @@ bool cRegistry::SetBinaryValue(HKEY hKeyRoot, LPSTR lpSubKey, LPSTR lpValue, PVO
 //--	return false;
 }
 
-bool cRegistry::SetDWORDValue(HKEY hKeyRoot, LPSTR lpSubKey, LPSTR lpValue, DWORD dwValue)
+bool cRegistry::SetDWORDValue(HKEY hKeyRoot, LPCTSTR lpSubKey, LPCTSTR lpValue, DWORD dwValue)
 {
 //+>
 	// hKeyRoot = User
@@ -287,7 +287,7 @@ bool cRegistry::SetDWORDValue(HKEY hKeyRoot, LPSTR lpSubKey, LPSTR lpValue, DWOR
 //--	return false;
 }
 
-bool cRegistry::SetStringValue(HKEY hKeyRoot, LPSTR lpSubKey, LPSTR lpValue, LPSTR lpData)
+bool cRegistry::SetStringValue(HKEY hKeyRoot, LPCTSTR lpSubKey, LPCTSTR lpValue, LPCTSTR const lpData)
 {
 //+>
 	// hKeyRoot = User

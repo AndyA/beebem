@@ -22,6 +22,7 @@ Offset  Description                 Access
 #include "main.h"
 #include "scsi.h"
 #include "beebmem.h"
+#include "fatal.h"
 
 //+>
 #include "user_config.h"
@@ -131,7 +132,7 @@ char pathbuff[256];
 			
 			if (f != NULL)
 			{
-				fread(buff, 1, 22, f);
+				fatal_fread(buff, 1, 22, f);
 			
 				// heads = buf[15];
 				// cyl   = buf[13] * 256 + buf[14];
@@ -609,7 +610,7 @@ int ReadSector(unsigned char *buf, int block)
 	
     fseek(SCSIDisc[scsi.lun], block * 256, SEEK_SET);
 	
-	fread(buf, 256, 1, SCSIDisc[scsi.lun]);
+	fatal_fread(buf, 256, 1, SCSIDisc[scsi.lun]);
     
 	return 256;
 }
@@ -788,7 +789,7 @@ bool DiscFormat(unsigned char *buf)
 	
 	if (f != NULL)
 	{
-		fread(buff, 1, 22, f);
+		fatal_fread(buff, 1, 22, f);
 		
 		// heads = buf[15];
 		// cyl   = buf[13] * 256 + buf[14];

@@ -20,6 +20,7 @@
 #include "disc1770.h"
 #include "tube.h"
 #include "serial.h"
+#include "fatal.h"
 
 FILE *UEFState;
 
@@ -102,7 +103,7 @@ void LoadUEFState(char *StateName) {
 //<-
 		FLength=ftell(UEFState);
 		fseek(UEFState,0,SEEK_SET);  // Get File length for eof comparison.
-		fread(UEFId,10,1,UEFState);
+		fatal_fread(UEFId,10,1,UEFState);
 		if (strcmp(UEFId,"UEF File!")!=0) {
 			MessageBox(GETHWND,"The file selected is not a UEF File.","BeebEm",MB_ICONERROR|MB_OK);
 			fclose(UEFState);

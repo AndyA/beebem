@@ -35,6 +35,7 @@
 #include "6502core.h"
 #include "disc8271.h"
 #include "uefstate.h"
+#include "fatal.h"
 
 //--#ifdef WIN32
 #include "windows.h"
@@ -133,7 +134,7 @@ typedef struct  {
   int NParams; /* Number of parameters to follow */
   CommandFunc ToCall; /* Called after all paameters have arrived */
   CommandFunc IntHandler; /* Called when interrupt requested by command is about to happen */
-  char *Ident; /* Mainly for debugging */
+  const char *Ident; /* Mainly for debugging */
 } PrimaryCommandLookupType; 
 
 /*--------------------------------------------------------------------------*/
@@ -1191,7 +1192,7 @@ void LoadSimpleDiscImage(char *FileName, int DriveNum,int HeadNum, int Tracks) {
       SecPtr[CurrentSector].IDField.PhysRecLength=256;
       SecPtr[CurrentSector].Deleted=0;
       SecPtr[CurrentSector].Data=(unsigned char *)calloc(1,256);
-      fread(SecPtr[CurrentSector].Data,1,256,infile);
+      fatal_fread(SecPtr[CurrentSector].Data,1,256,infile);
     }; /* Sector */
   }; /* Track */
 
@@ -1254,7 +1255,7 @@ void LoadSimpleDSDiscImage(char *FileName, int DriveNum,int Tracks) {
         SecPtr[CurrentSector].IDField.PhysRecLength=256;
         SecPtr[CurrentSector].Deleted=0;
         SecPtr[CurrentSector].Data=(unsigned char *)calloc(1,256);
-        fread(SecPtr[CurrentSector].Data,1,256,infile);
+        fatal_fread(SecPtr[CurrentSector].Data,1,256,infile);
       }; /* Sector */
     }; /* Head */
   }; /* Track */
@@ -1699,7 +1700,7 @@ void Load8271UEF(FILE *SUEF)
 	DiscLoaded[0]=FALSE;
 	DiscLoaded[1]=FALSE;
 
-	fread(FileName,1,256,SUEF);
+	fatal_fread(FileName,1,256,SUEF);
 	if (FileName[0]) {
 		// Load drive 0
 		Loaded=1;
@@ -1713,7 +1714,7 @@ void Load8271UEF(FILE *SUEF)
 			LoadFailed=1;
 	}
 
-	fread(FileName,1,256,SUEF);
+	fatal_fread(FileName,1,256,SUEF);
 	if (FileName[0]) {
 		// Load drive 1
 		Loaded=1;
@@ -1750,7 +1751,7 @@ void Load8271UEF(FILE *SUEF)
 		ThisCommand=fget32(SUEF);
 		NParamsInThisCommand=fget32(SUEF);
 		PresentParam=fget32(SUEF);
-		fread(Params,1,16,SUEF);
+		fatal_fread(Params,1,16,SUEF);
 		NumHeads[0]=fget32(SUEF);
 		NumHeads[1]=fget32(SUEF);
 		Selects[0]=fget32(SUEF);

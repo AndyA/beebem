@@ -39,6 +39,7 @@
 #include "uefstate.h"
 #include "z80mem.h"
 #include "z80.h"
+#include "fatal.h"
 
 //>++
 #include "user_config.h"
@@ -1442,7 +1443,7 @@ void Reset65C02(void) {
 
   TubeRom=fopen(TubeRomName,"rb");
   if (TubeRom!=NULL) {
-	  fread(TubeRam+0xf800,1,2048,TubeRom);
+	  fatal_fread(TubeRam+0xf800,1,2048,TubeRom);
 	  fclose(TubeRom);
   }
 //>++
@@ -2621,7 +2622,7 @@ void Save65C02MemUEF(FILE *SUEF) {
 
 void LoadTubeUEF(FILE *SUEF) {
 	R1Status=fgetc(SUEF);
-	fread(R1PHData,1,24,SUEF);
+	fatal_fread(R1PHData,1,24,SUEF);
 	R1PHPtr=fgetc(SUEF);
 	R1HStatus=fgetc(SUEF);
 	R1HPData=fgetc(SUEF);
@@ -2660,5 +2661,5 @@ void Load65C02UEF(FILE *SUEF) {
 }
 
 void Load65C02MemUEF(FILE *SUEF) {
-	fread(TubeRam,1,65536,SUEF);
+	fatal_fread(TubeRam,1,65536,SUEF);
 }

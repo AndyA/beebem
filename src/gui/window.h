@@ -81,7 +81,7 @@ typedef struct{
 #ifdef __cplusplus
 extern "C"{
 #endif
-	EG_Window* 	EG_Window_Create(char *name_ptr, SDL_Surface *surface_ptr, SDL_Color background_color, SDL_Rect dimension);
+	EG_Window* 	EG_Window_Create(const char *name_ptr, SDL_Surface *surface_ptr, SDL_Color background_color, SDL_Rect dimension);
 	void 		EG_Window_Destroy(EG_Window *window_ptr);
 
 	void 		EG_Window_DestroyAllChildWidgets(EG_Window *window_ptr);

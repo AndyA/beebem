@@ -96,7 +96,7 @@ class BeebWin  {
 	void SetDiscWriteProtects(void);
 	void SetRomMenu(void);				// LRW  Added for individual ROM/Ram
 	void SelectFDC(void);
-	void LoadFDC(char *DLLName, bool save);
+	void LoadFDC(const char *DLLName, bool save);
 	void KillDLLs(void);
 	void UpdateLEDMenu(HMENU hMenu);
 	void SetDriveControl(unsigned char value);

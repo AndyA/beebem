@@ -21,6 +21,7 @@
 #include "beebwin.h"
 #include "debug.h"
 #include "uefstate.h"
+#include "fatal.h"
 
 FILE *csw_file;
 unsigned char file_buf[BUFFER_LEN];
@@ -82,7 +83,6 @@ void LoadCSW(char *file)
 	int sample_rate = file_buf[0x19] + (file_buf[0x1a] << 8) + (file_buf[0x1b] << 16) + (file_buf[0x1c] << 24);
 	int total_samples = file_buf[0x1d] + (file_buf[0x1e] << 8) + (file_buf[0x1f] << 16) + (file_buf[0x20] << 24);
 	int compression_type = file_buf[0x21];
-	int flags = file_buf[0x22];
 	unsigned int header_ext = file_buf[0x23];
 
 //->	WriteLog("Sample rate: %d\n", sample_rate);
@@ -123,7 +123,7 @@ void LoadCSW(char *file)
 	csw_buff = (unsigned char *) malloc(csw_bufflen);
 	sourcebuff = (unsigned char *) malloc(sourcesize);
 	
-	fread(sourcebuff, 1, sourcesize, csw_file);
+	fatal_fread(sourcebuff, 1, sourcesize, csw_file);
 	fclose(csw_file);
 	
 	uncompress(csw_buff, &csw_bufflen, sourcebuff, sourcesize);

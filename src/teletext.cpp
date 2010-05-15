@@ -18,6 +18,7 @@ Offset  Description                 Access
 #include "6502core.h"
 #include "main.h"
 #include "beebmem.h"
+#include "fatal.h"
 
 char TeleTextAdapterEnabled=0;
 int TeleTextStatus = 0xef;
@@ -33,7 +34,7 @@ int txtChnl = -1;
 
 unsigned char row[16][43];
 
-void TeleTextLog(char *text, ...)
+void TeleTextLog(const char *text, ...)
 {
 FILE *f;
 va_list argptr;
@@ -192,7 +193,7 @@ char buff[13 * 43];
             TeleTextLog("TeleTextPoll Reading Frame %ld, PC = 0x%04x\n", txtCurFrame, ProgramCounter);
 
             fseek(txtFile, txtCurFrame * 860L + 3L * 43L, SEEK_SET);
-            fread(buff, 13 * 43, 1, txtFile);
+            fatal_fread(buff, 13 * 43, 1, txtFile);
             for (i = 0; i < 16; ++i)
             {
                 switch(i)

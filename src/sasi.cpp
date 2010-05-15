@@ -22,6 +22,7 @@ Offset  Description                 Access
 #include "main.h"
 #include "sasi.h"
 #include "beebmem.h"
+#include "fatal.h"
 
 //+>
 #include "user_config.h"
@@ -164,7 +165,7 @@ int data = 0xff;
 		data = 0x01;
 
 		if (sasi.sel == false) data |= 0x80;
-		if (sasi.req = false) data |= 0x40;
+		if (sasi.req == false) data |= 0x40;
 		if (sasi.cd == true) data |= 0x20;
 		if (sasi.io == true) data |= 0x10;
 		if (sasi.irq) data |= 0x08;
@@ -560,7 +561,7 @@ int SASIReadSector(unsigned char *buf, int block)
 	
     fseek(SASIDisc[sasi.lun], block * 256, SEEK_SET);
 	
-	fread(buf, 256, 1, SASIDisc[sasi.lun]);
+	fatal_fread(buf, 256, 1, SASIDisc[sasi.lun]);
     
 	return 256;
 }

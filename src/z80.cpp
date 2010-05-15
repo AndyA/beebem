@@ -24,7 +24,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA. */
 #	include <config.h>
 #endif
 
-char *perl_params =
+const char *perl_params =
     "combine=0,"
     "optab=0,"
     "cb_inline=1,"

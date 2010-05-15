@@ -51,6 +51,7 @@
 #include "avi.h"
 #include "main.h"
 #include "speech.h"
+#include "fatal.h"
 
 //-- extern AVIWriter *aviWriter;
 
@@ -650,7 +651,7 @@ void LoadRelaySounds(void) {
 
 	RelayFile=fopen(PRFN,"rb");
 	if (RelayFile!=NULL) {
-		fread(RelayOnBuf,1,2048,RelayFile);
+		fatal_fread(RelayOnBuf,1,2048,RelayFile);
 		fclose(RelayFile);
 	}
 	else {
@@ -666,7 +667,7 @@ void LoadRelaySounds(void) {
 
 	RelayFile=fopen(PRFN,"rb");
 	if (RelayFile!=NULL) {
-		fread(RelayOffBuf,1,2048,RelayFile);
+		fatal_fread(RelayOffBuf,1,2048,RelayFile);
 		fclose(RelayFile);
 	}
 	else {

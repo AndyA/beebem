@@ -23,6 +23,7 @@ Based on code written by Frank Palazzolo and others
 #include "main.h"
 #include "viastate.h"
 #include "debug.h"
+#include "fatal.h"
 
 #include "speech.h"
 
@@ -184,7 +185,7 @@ void BeebReadPhroms(void) {
 
 	// read phroms
 	for (romslot=15;romslot>=0;romslot--) {
-		fgets(RomName,80,RomCfg);
+		fatal_fgets(RomName,80,RomCfg);
 		if (strchr(RomName, 13)) *strchr(RomName, 13) = 0;
 		if (strchr(RomName, 10)) *strchr(RomName, 10) = 0;
 		strcpy(fullname,RomName);
@@ -212,7 +213,7 @@ void BeebReadPhroms(void) {
 			InFile = fopen(fullname,"rb");
 			if (InFile!=NULL)
 			{
-				fread(phrom_rom[romslot], 1, 16384, InFile);
+				fatal_fread(phrom_rom[romslot], 1, 16384, InFile);
 				fclose(InFile);
 			}
 			else 
@@ -417,7 +418,7 @@ void tms5220_update(unsigned char *buff, int length)
 		else
 		{
 			if (buffer - buff != len)
-				fprintf(stderr, "Here for some reason - mismatch in num of samples = %d, %d\n", len, buffer - buff);
+				fprintf(stderr, "Here for some reason - mismatch in num of samples = %d, %ld\n", len, buffer - buff);
 			tms5220_process(info->chip, sample_data, 0);
 			return;
 		}
@@ -464,7 +465,7 @@ void tms5220_update(unsigned char *buff, int length)
 	info->curr_sample = curr;
 
 	if (buffer - buff != len)
-		fprintf(stderr, "At end of update - mismatch in num of samples = %d, %d\n", len, buffer - buff);
+		fprintf(stderr, "At end of update - mismatch in num of samples = %d, %ld\n", len, buffer - buff);
 }
 
 /**********************************************************************************************
@@ -536,7 +537,7 @@ void tms5220_reset_chip(struct tms5220 *chip)
 	
 }
 
-void logerror(char *text, ...)
+void logerror(const char *text, ...)
 {
 va_list argptr;
 	

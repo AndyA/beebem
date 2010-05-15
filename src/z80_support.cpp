@@ -10,6 +10,7 @@
 #include "z80mem.h"
 #include "z80.h"
 #include "beebmem.h"
+#include "fatal.h"
 
 #include "tube.h"
 
@@ -267,7 +268,7 @@ FILE *f;
 		f = fopen(path, "rb");
 		if (f != NULL)
 		{
-			fread(z80_rom, 4096, 1, f);
+			fatal_fread(z80_rom, 4096, 1, f);
 			fclose(f);
 		}
 	}
@@ -281,7 +282,7 @@ FILE *f;
 		f = fopen(path, "rb");
 		if (f != NULL)
 		{
-			fread(z80_rom, 8192, 1, f);
+			fatal_fread(z80_rom, 8192, 1, f);
 			fclose(f);
 		}
 	}

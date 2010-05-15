@@ -1415,7 +1415,7 @@ int ConvertSDLKeyToBBCKey(SDL_keysym keysym /*, int *pressed */, int *col
 	*(col) = p->col;
 //	*(pressed) = (bsymwaspressed ? 1 : 0);
 
-//	printf("KEY [%d][%d][%d]\n", keysym.sym, p->row, p->col);
+	printf("KEY [%d][%d][%d]\n", keysym.sym, p->row, p->col);
 
 	return(1);
 }

@@ -29,7 +29,7 @@ beebem_SOURCES =main.cpp log.c sdl.cpp windows.cpp beebem_pages.cpp \
 		econet.cpp sasi.cpp scsi.cpp serial.cpp speech.cpp sysvia.cpp \
 		tube.cpp uef.cpp uefstate.cpp userkybd.cpp uservia.cpp via.cpp \
 		video.cpp z80.cpp z80_support.cpp z80dis.cpp i386dasm.cpp i86.cpp \
-		teletext.cpp \
+		teletext.cpp fatal.cpp \
 		\
 		main.h types.h log.h line.h sdl.h \
 		hardware.h hardware.cpp \
@@ -44,5 +44,6 @@ beebem_SOURCES =main.cpp log.c sdl.cpp windows.cpp beebem_pages.cpp \
 		via.h viastate.h video.h \
 		z80.h z80mem.h \
 		zlib/zlib.h zlib/zconf.h \
-		ea.h i86.h instr86.h osd_cpu.h teletext.h
+		ea.h i86.h instr86.h osd_cpu.h teletext.h \
+		fatal.h
 

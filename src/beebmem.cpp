@@ -52,6 +52,7 @@
 #include "econet.h"		//Rob
 #include "debug.h"		//Rob added for INTON/OFF reporting only
 #include "teletext.h"
+#include "fatal.h"
 
 //+>
 #include "user_config.h"
@@ -1028,17 +1029,17 @@ void BeebReadRoms(void) {
 	if (RomCfg!=NULL) {
 		if (MachineType==1)
 			for (romslot=0;romslot<17;romslot++)
-				fgets(RomName,80,RomCfg);
+				fatal_fgets(RomName,80,RomCfg);
 
 		if (MachineType==2)
 			for (romslot=0;romslot<34;romslot++) 
-				fgets(RomName,80,RomCfg);
+				fatal_fgets(RomName,80,RomCfg);
 	
 		if (MachineType==3)
 			for (romslot=0;romslot<51;romslot++)
-				fgets(RomName,80,RomCfg);
+				fatal_fgets(RomName,80,RomCfg);
 
-		fgets(RomName,80,RomCfg);
+		fatal_fgets(RomName,80,RomCfg);
 
 		while( strlen(RomName)>0 &&((int)RomName[strlen(RomName)-1])<32)
 			RomName[strlen(RomName)-1] = '\0';
@@ -1077,7 +1078,7 @@ void BeebReadRoms(void) {
 		}
 
 		for (romslot=15;romslot>=0;romslot--) {
-			fgets(RomName,80,RomCfg);
+			fatal_fgets(RomName,80,RomCfg);
 
 			while(strlen(RomName)>0
 			 && ((int) RomName[strlen(RomName)-1]) < 32)
@@ -1311,21 +1312,21 @@ void LoadRomRegsUEF(FILE *SUEF) {
 }
 
 void LoadMainMemUEF(FILE *SUEF) {
-	fread(WholeRam,1,32768,SUEF);
+	fatal_fread(WholeRam,1,32768,SUEF);
 }
 
 void LoadShadMemUEF(FILE *SUEF) {
 	int SAddr;
 	switch (MachineType) {
 	case 1:
-		fread(ShadowRam,1,20480,SUEF);
+		fatal_fread(ShadowRam,1,20480,SUEF);
 		break;
 	case 2:
-		fread(ShadowRAM,1,32768,SUEF);
+		fatal_fread(ShadowRAM,1,32768,SUEF);
 		break;
 	case 3:
 		SAddr=fget16(SUEF);
-		fread(ShadowRAM+SAddr,1,32768,SUEF);
+		fatal_fread(ShadowRAM+SAddr,1,32768,SUEF);
 		break;
 	}
 }
@@ -1333,30 +1334,30 @@ void LoadShadMemUEF(FILE *SUEF) {
 void LoadPrivMemUEF(FILE *SUEF) {
 	switch (MachineType) {
 	case 1:
-		fread(Private,1,12288,SUEF);
+		fatal_fread(Private,1,12288,SUEF);
 		break;
 	case 2:
-		fread(Private,1,12288,SUEF);
+		fatal_fread(Private,1,12288,SUEF);
 		break;
 	case 3:
-		fread(PrivateRAM,1,4096,SUEF);
+		fatal_fread(PrivateRAM,1,4096,SUEF);
 		break;
 	}
 }
 
 void LoadFileMemUEF(FILE *SUEF) {
-	fread(FSRam,1,8192,SUEF);
+	fatal_fread(FSRam,1,8192,SUEF);
 }
 
 void LoadIntegraBHiddenMemUEF(FILE *SUEF) {
-	fread(Hidden,1,256,SUEF);
+	fatal_fread(Hidden,1,256,SUEF);
 }
 
 void LoadSWRMMemUEF(FILE *SUEF) {
 	int Rom;
 	Rom=fgetc(SUEF);
 	RomWritable[Rom]=1;
-	fread(Roms[Rom],1,16384,SUEF);
+	fatal_fread(Roms[Rom],1,16384,SUEF);
 }
 
 /*-------------------------------------------------------------------------*/

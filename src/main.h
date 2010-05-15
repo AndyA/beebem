@@ -49,7 +49,7 @@ extern int Tmp_Command_Line_Fullscreen;
 extern cRegistry SysReg;
 extern char FDCDLL[256];
 
-extern char *CFG_REG_KEY;
+extern const char *CFG_REG_KEY;
 
 //extern int fullscreen;
 extern int done;

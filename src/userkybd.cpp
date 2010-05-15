@@ -180,6 +180,7 @@ BOOL UserKeyboardDialog( HWND      hwndParent )
 //--
 //--    return fResult;
 //--
+  return FALSE;
 }   // UserKeyboardDialog
 /****************************************************************************/
 
@@ -417,6 +418,7 @@ COLORREF GetKeyColour( UINT ctrlID )
 //--	default:
 //--		return NormalKey;
 //--	}
+  return NULL;
 } // GetKeyColour
 
 /****************************************************************************/
@@ -512,6 +514,7 @@ HWND PromptForInput( HWND hwndParent, UINT ctrlID )
 //--		ShowWindow( Success, SW_SHOW );
 //--	
 //--	return Success;
+  return NULL;
 }
 
 /****************************************************************************/
@@ -692,6 +695,7 @@ LPSTR KeyName( UINT Key )
 //--		return Character;
 //--	}
 //--
+  return NULL;
 }
 
 /****************************************************************************/

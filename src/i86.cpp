@@ -17,6 +17,7 @@
 
 #include "osd_cpu.h"
 #include "i86.h"
+#include "fatal.h"
 
 /*************************************
  *
@@ -3632,7 +3633,7 @@ int le, i;
 
 	sprintf(buff + strlen(buff), "%s", buffer); 
 //--    WriteLog(buff);
-	printf(buff);
+	printf("%s", buff);
 
 }
 
@@ -3817,13 +3818,13 @@ char path[256];
 
     f = fopen(path, "rb");
     fseek(f, 0, SEEK_SET);
-    fread(opcode_base + 0xf0000L, 16384, 1, f);
+    fatal_fread(opcode_base + 0xf0000L, 16384, 1, f);
     fseek(f, 0, SEEK_SET);
-    fread(opcode_base + 0xf4000L, 16384, 1, f);
+    fatal_fread(opcode_base + 0xf4000L, 16384, 1, f);
     fseek(f, 0, SEEK_SET);
-    fread(opcode_base + 0xf8000L, 16384, 1, f);
+    fatal_fread(opcode_base + 0xf8000L, 16384, 1, f);
     fseek(f, 0, SEEK_SET);
-    fread(opcode_base + 0xfc000L, 16384, 1, f);
+    fatal_fread(opcode_base + 0xfc000L, 16384, 1, f);
     fclose(f);
 
 	//printf("****** loaded %s \n", path);

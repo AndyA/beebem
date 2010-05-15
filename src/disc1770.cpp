@@ -37,6 +37,7 @@ can be determined under normal use".
 #include "uefstate.h"
 #include "z80mem.h"
 #include "z80.h"
+#include "fatal.h"
 
 extern FILE *tlog;
 extern int trace;
@@ -784,7 +785,7 @@ void Close1770Disc(char Drive) {
 	}
 }
 
-#define BPUT(a) fputc(a,NewImage); CheckSum=(CheckSum+a)&255
+#define BPUT(a) fputc((a),NewImage); CheckSum=(CheckSum+(a))&255
 
 void CreateADFSImage(char *ImageName,unsigned char Drive,unsigned char Tracks, HMENU dmenu) {
 	// This function creates a blank ADFS disc image, and then loads it.
@@ -915,7 +916,7 @@ void Load1770UEF(FILE *SUEF,int Version)
 	DiscType[0]=fgetc(SUEF);
 	DiscType[1]=fgetc(SUEF);
 
-	fread(FileName,1,256,SUEF);
+	fatal_fread(FileName,1,256,SUEF);
 	if (FileName[0]) {
 		// Load drive 0
 		Loaded=1;
@@ -924,7 +925,7 @@ void Load1770UEF(FILE *SUEF,int Version)
 			LoadFailed=1;
 	}
 
-	fread(FileName,1,256,SUEF);
+	fatal_fread(FileName,1,256,SUEF);
 	if (FileName[0]) {
 		// Load drive 1
 		Loaded=1;
@@ -980,7 +981,7 @@ void Load1770UEF(FILE *SUEF,int Version)
 			DiskDensity[1]=fgetc(SUEF);
 		SelectedDensity=fgetc(SUEF);
 		RotSect=fgetc(SUEF);
-		fread(FDCDLL,1,256,SUEF);
+		fatal_fread(FDCDLL,1,256,SUEF);
 
 		if (CurrentDrive==1)
 			CDiscOpen=&Disc1Open;

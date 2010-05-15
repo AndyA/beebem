@@ -14,18 +14,18 @@
 
 class cRegistry {
 public:
-	bool CreateKey(HKEY hKeyRoot, LPSTR lpSubKey);
-	bool DeleteKey(HKEY hKeyRoot, LPSTR lpSubKey);
+	bool CreateKey(HKEY hKeyRoot, LPCTSTR lpSubKey);
+	bool DeleteKey(HKEY hKeyRoot, LPCTSTR lpSubKey);
 
-	bool DeleteValue(HKEY hKeyRoot, LPSTR lpSubKey, LPSTR lpValueName);
+	bool DeleteValue(HKEY hKeyRoot, LPCTSTR lpSubKey, LPCTSTR lpValueName);
 
-	bool GetBinaryValue(HKEY hKeyRoot, LPSTR lpSubKey, LPSTR lpValue, PVOID pData, int* pnSize);
-	bool GetDWORDValue(HKEY hKeyRoot, LPSTR lpSubKey, LPSTR lpValue, DWORD &dwBuffer);
-	bool GetStringValue(HKEY hKeyRoot, LPSTR lpSubKey, LPSTR lpValue, LPSTR lpBuffer);
+	bool GetBinaryValue(HKEY hKeyRoot, LPCTSTR lpSubKey, LPCTSTR lpValue, PVOID pData, int* pnSize);
+	bool GetDWORDValue(HKEY hKeyRoot, LPCTSTR lpSubKey, LPCTSTR lpValue, DWORD &dwBuffer);
+	bool GetStringValue(HKEY hKeyRoot, LPCTSTR lpSubKey, LPCTSTR lpValue, LPSTR lpBuffer);
 
-	bool SetBinaryValue(HKEY hKeyRoot, LPSTR lpSubKey, LPSTR lpValue, PVOID pData, int* pnSize);
-	bool SetDWORDValue(HKEY hKeyRoot, LPSTR lpSubKey, LPSTR lpValue, DWORD dwValue);
-	bool SetStringValue(HKEY hKeyRoot, LPSTR lpSubKey, LPSTR lpValue, LPSTR lpData);
+	bool SetBinaryValue(HKEY hKeyRoot, LPCTSTR lpSubKey, LPCTSTR lpValue, const PVOID pData, int* pnSize);
+	bool SetDWORDValue(HKEY hKeyRoot, LPCTSTR lpSubKey, LPCTSTR lpValue, DWORD dwValue);
+	bool SetStringValue(HKEY hKeyRoot, LPCTSTR lpSubKey, LPCTSTR lpValue, LPCTSTR lpData);
 };
 
 
