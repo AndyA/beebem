@@ -1363,14 +1363,20 @@ static struct BeebKeyTrans SDLtoBeebEmKeymap[]={
 
 {SDLK_PAUSE,		-2,-2},	// BREAK
 
+{SDLK_LEFTBRACKET,      3,8},   // "[" / "{" or left arrow and 1/4 (mode 7)
+{SDLK_RIGHTBRACKET,     5,8},   // "]" / "}" or right arrow and 3/4 (mode 7)
+
+{SDLK_BACKSLASH,        7,8},   // "\" / "|" or 1/4 and || (mode 7)
+
 //,   -3,-3,  // ******** PAGE UP
 //,   -3,-4,  // ******** PAGE DOWN
 //,   -4,0,   // ******** KEYPAD PLUS
 //,   -4,1,   // ******** KEYPAD MINUS
-//,	1,8,	// *** an up arrow and a maths divison symbol ???
-//,	3,8,	// *** a left facing arrow and a 1/4 percentage symbol ???
-//,	7,8,	// *** a 1/2 percentage symbol and two vertical lines ???
-//,	5,8,	// *** a right facing arrow and a 3/4 percentage symbol ???
+//              // The following key codes have different symbols in mode 7
+//,	1,8,	// *** an up arrow and a maths divison symbol or
+//,	3,8,	// *** a left facing arrow and a 1/4 percentage symbol or [/{
+//,	7,8,	// *** a 1/2 percentage symbol and two vertical lines or \/|
+//,	5,8,	// *** a right facing arrow and a 3/4 percentage symbol or ]/}
 
 {-1, -1, -1}              // ** END OF LIST **
 };
