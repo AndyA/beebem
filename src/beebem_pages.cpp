@@ -15,6 +15,8 @@
 
 #include <gtk/gtk.h>
 
+#include <stdint.h>
+
 // [TODO] This shouldn't really be here.
 #define SCREEN_WIDTH 640
 #define SCREEN_HEIGHT 512
@@ -1628,7 +1630,7 @@ static void Screen_Button_Back(EG_Widget *widget_ptr, void *user_ptr)
 
 static void Change_Windowed_Resolution(EG_Widget *widget_ptr, void *user_ptr)
 {
-	int value = (int) user_ptr;
+	intptr_t value = (intptr_t) user_ptr;
 	cfg_Windowed_Resolution = value;
 
 	EG_Window_Hide(gui.win_screen_ptr);
@@ -1650,7 +1652,7 @@ static void Change_Windowed_Resolution(EG_Widget *widget_ptr, void *user_ptr)
 
 static void Change_Fullscreen_Resolution(EG_Widget *widget_ptr, void *user_ptr)
 {
-	int value = (int) user_ptr;
+	intptr_t value = (intptr_t) user_ptr;
 	cfg_Fullscreen_Resolution = value;
 
 	EG_Window_Hide(gui.win_screen_ptr);
