@@ -571,6 +571,10 @@ int Create_Screen(void)
 
 //printf("2: flags set\n");
 
+	/* Make sure screen surface was free'd.
+	 */
+	if (screen_ptr != NULL) Destroy_Screen();
+
  //      if ( (screen_ptr=SDL_SetVideoMode(SDL_WINDOW_WIDTH, SDL_WINDOW_HEIGHT
         if ( (screen_ptr=SDL_SetVideoMode(width, height
 	 , 8, flags ) ) == NULL){
@@ -579,6 +583,10 @@ int Create_Screen(void)
 
                 return false;
         }
+
+	/* Update GUI pointers to screen surface.
+	 */
+	ClearWindowsBackgroundCacheAndResetSurface();
 
 //printf("3: SDL_SetVideoMode called\n");
 
