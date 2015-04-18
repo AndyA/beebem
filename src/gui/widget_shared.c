@@ -89,15 +89,6 @@ void EG_Callback_Generic_Destroy(EG_Widget *widget_ptr)
  */
 EG_BOOL EG_Callback_Generic_SDL_Event(EG_Widget *widget_ptr, SDL_Event *event_ptr)
 {
-	/* Loose GNU CC -Wall -W compiler warnings.
-	 */
-
-	EG_Widget *tmp_widget;
-	SDL_Event *tmp_event;
-
-	tmp_widget = widget_ptr;
-	tmp_event = event_ptr;
-
 	/* Call users event callback.
 	 */
 	if (EG_Shared_IsMouseOverWidget(widget_ptr, event_ptr) == EG_TRUE)
@@ -114,14 +105,8 @@ EG_BOOL EG_Callback_Generic_SDL_Event(EG_Widget *widget_ptr, SDL_Event *event_pt
 EG_BOOL EG_Callback_Generic_Visible_NoSupport(EG_Widget *widget_ptr
  , EG_BOOL is_visible)
 {
-	/* Loose GNU CC -Wall -W compiler warnings.
-	 */
-
-	EG_Widget *tmp_widget_ptr;
-	EG_BOOL tmp_is_visible;
-
-	tmp_widget_ptr = widget_ptr;
-	tmp_is_visible = is_visible;
+        (void) widget_ptr;
+        (void) is_visible;
 
 	return(EG_FALSE);
 }
@@ -162,15 +147,8 @@ EG_BOOL EG_Callback_Generic_Stopped(EG_Widget *widget_ptr, EG_BOOL is_stopped)
  */
 EG_BOOL EG_Callback_Generic_Enabled_NoSupport(EG_Widget *widget_ptr, EG_BOOL is_enabled)
 {
-
-	/* Loose GNU CC -Wall -W compiler warnings.
-	 */
-
-	EG_Widget *tmp_widget_ptr;
-	EG_BOOL tmp;
-
-	tmp_widget_ptr = widget_ptr;
-	tmp = is_enabled;
+        (void) widget_ptr;
+        (void) is_enabled;
 
         return(EG_FALSE);
 }
@@ -188,12 +166,7 @@ EG_BOOL EG_Callback_Generic_Enabled(EG_Widget *widget_ptr, EG_BOOL is_enabled)
  */
 EG_BOOL EG_Callback_Generic_GotFocus_NoSupport(EG_Widget *widget_ptr)
 {
-	/* Loose GNU CC -Wall -W compiler warnings.
-	 */
-
-	EG_Widget *tmp_widget_ptr;
-
-	tmp_widget_ptr = widget_ptr;
+        (void) widget_ptr;
 
 	return(EG_FALSE);
 }
@@ -238,26 +211,10 @@ EG_BOOL EG_Callback_Generic_GotFocus(EG_Widget *widget_ptr)
  */
 void EG_Callback_Generic_LostFocus_NoSupport(EG_Widget *widget_ptr)
 {
-	/* Loose GNU CC -Wall -W compiler warnings.
-	 */
-
-	EG_Widget *tmp_ptr;
-	tmp_ptr = widget_ptr;
+        (void) widget_ptr;
 }
 void EG_Callback_Generic_LostFocus(EG_Widget *widget_ptr)
 {
-	/* There is not much we can do if this fails.  I'll log it for now,
-	 * but this may become annoying!
-	 */
-//	if ( EG_Widget_RepaintLot(widget_ptr) != EG_TRUE)
-//		EG_Log( EG_LOG_WARNING, dL"Failed to render widget '%s'\n"
-//		 , dR, EG_Widget_GetName(widget_ptr) );
-
-	EG_Widget *tmp_ptr;
-	tmp_ptr = widget_ptr;
-
-	/* Call users event callback.
-	 */
 	EG_Widget_CallUserOnGotFocus(widget_ptr);
 }
 
@@ -280,19 +237,10 @@ void EG_Callback_Generic_LostFocus(EG_Widget *widget_ptr)
 void EG_Callback_Generic_Attach(EG_Widget *widget_ptr
  , EG_StringHash attach_to_type, void *attach_to_ptr, EG_BOOL attached)
 {
-
-	/* Loose GNU CC -Wall -W compiler warnings.
-	 */
-
-	EG_Widget *tmp_widget_ptr;
-	EG_StringHash tmp_attach_to_type;
-	void *tmp_attach_to_ptr;
-	EG_BOOL tmp_attached;
-
-	tmp_widget_ptr = widget_ptr;
-	tmp_attach_to_type = attach_to_type;
-	tmp_attach_to_ptr = attach_to_ptr;
-	tmp_attached = attached;
+  (void) widget_ptr;
+  (void) attach_to_type;
+  (void) attach_to_ptr;
+  (void) attached;
 }
 
 

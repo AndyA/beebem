@@ -251,17 +251,14 @@ static EG_BOOL Callback_Stopped(EG_Widget *widget_ptr, EG_BOOL is_stopped)
 static void Callback_Attach(EG_Widget *widget_ptr, EG_StringHash attach_to_type
  , void *attach_to_ptr, EG_BOOL attached)
 {
-	EG_StringHash tmp_attach_to_type;
 
 	EG_TabGroup *tabgroup_ptr;
 	EG_Window *window_ptr;
 	int i;
 
-	printf("attached = %d\n", attached);
+        (void) attach_to_type;
 
-	/* Loose compiler warning.
-	 */
-	tmp_attach_to_type = attach_to_type;
+	printf("attached = %d\n", attached);
 
 	/* We only need to add the pages to the window when attaching, we do
 	 * nothing when detatching.

@@ -228,9 +228,6 @@ void EG_Draw_Char(SDL_Surface *surface, SDL_Color *color, EG_BOOL bold, Uint16 x
         SDL_Rect src, dst;
         SDL_Surface *source_surface;
 
-	SDL_Color *tmp;		// Dump compiler warning
-	tmp = color;
-
 	src.x = c & 15;
 	src.y = ((unsigned char) c) >> 4;
 

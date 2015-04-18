@@ -130,10 +130,6 @@ extern "C"{
 
 	EG_BOOL 	EG_Window_ThisWidgetHasFocus(EG_Widget *widget_ptr);
 
-
-	//EG_Window_UpdateWidgetDrawingArea(EG_Widget *parent_widget_ptr, EG_Widget *child_widget_ptr, int left_inset, int right_inset, int top_inset, int bottom_inset);
-
-	void 		EG_Window_Diagnositc_DumpChildren(EG_Window *window_ptr);
 #ifdef __cplusplus
 }
 #endif
