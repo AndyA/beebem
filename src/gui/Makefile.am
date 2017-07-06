@@ -1,8 +1,8 @@
 CXX = @CXX@ -Wall -DDATA_DIR=\"$(pkgdatadir)\"
 CC = @CC@ -Wall -DDATA_DIR=\"$(pkgdatadir)\"
 
-# INCLUDES = -I@top_srcdir@/src -I@top_srcdir@/src/gui
-INCLUDES = -I@top_srcdir@/src
+# AM_CPPFLAGS = -I@top_srcdir@/src -I@top_srcdir@/src/gui
+AM_CPPFLAGS = -I@top_srcdir@/src
 
 noinst_LIBRARIES = libeg.a
 libeg_a_SOURCES = gui.h \

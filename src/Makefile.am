@@ -7,10 +7,10 @@ SUBDIRS = gui
 
 #INCLUDE = -I@top_srcdir@/src/gui
 
-#INCLUDES        = @GTK_CFLAGS@ -I@top_srcdir@/src/gui
+#AM_CPPFLAGS        = @GTK_CFLAGS@ -I@top_srcdir@/src/gui
 #LDADD           = @GTK_LIBS@ @top_srcdir@/src/gui/libeg.a
 
-INCLUDES        = @GTK_CFLAGS@ -I@top_srcdir@/src/gui -I@top_srcdir@/src/
+AM_CPPFLAGS        = @GTK_CFLAGS@ -I@top_srcdir@/src/gui -I@top_srcdir@/src/
 LDADD           = @GTK_LIBS@ @top_srcdir@/src/gui/libeg.a
 
 

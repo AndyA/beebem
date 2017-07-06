@@ -1192,7 +1192,8 @@ void LoadSimpleDiscImage(char *FileName, int DriveNum,int HeadNum, int Tracks) {
       SecPtr[CurrentSector].IDField.PhysRecLength=256;
       SecPtr[CurrentSector].Deleted=0;
       SecPtr[CurrentSector].Data=(unsigned char *)calloc(1,256);
-      fatal_fread(SecPtr[CurrentSector].Data,1,256,infile);
+      memset(SecPtr[CurrentSector].Data, 0, 256);
+      fread(SecPtr[CurrentSector].Data, 1, 256, infile);
     }; /* Sector */
   }; /* Track */
 
@@ -1255,7 +1256,8 @@ void LoadSimpleDSDiscImage(char *FileName, int DriveNum,int Tracks) {
         SecPtr[CurrentSector].IDField.PhysRecLength=256;
         SecPtr[CurrentSector].Deleted=0;
         SecPtr[CurrentSector].Data=(unsigned char *)calloc(1,256);
-        fatal_fread(SecPtr[CurrentSector].Data,1,256,infile);
+        memset(SecPtr[CurrentSector].Data,0,256);
+        fread(SecPtr[CurrentSector].Data,1,256,infile);
       }; /* Sector */
     }; /* Head */
   }; /* Track */
